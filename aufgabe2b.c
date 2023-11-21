@@ -30,7 +30,8 @@ void printDate(int day, int month, int year, int countryCode) {
         break;
     
     default:
-        printf("Der eingegebene Ländercode konnte nicht zugeordenet werden!\nBitte starten sie das Programm wie folgt:\n<Tag> <Monat> <Jahr> <Land(EN=0,USA=1,NE=2,CHINA=3,CA=4)> \n");
+        printf("Der eingegebene Ländercode konnte nicht zugeordenet werden!\n Datum wird im Standart Ländercode EN ausgegeben!\n");
+        printf("Das Datum ist der %d.%d.%d\n", day, month, year);
         break;
     }
     

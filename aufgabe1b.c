@@ -61,8 +61,9 @@ int validDay(int day, int month, int year) {
             }
             
         }else {
+            
 
-            if (month % 2 == 0)
+            if (month % 2 == 0 && month != 7)
             {
                 
                 if (day <= 30)
@@ -155,23 +156,20 @@ int main(int argc, char *argv[]) {
         {
             valid = 0;
             printf("Fehlerhafter Tag. Bitte wiederholen! \n");
-            break;
         }
         if (validMonth(month) == 0)
         {
             valid = 0;
             printf("Fehlerhafter Monat. Bitte wiederholen! \n");
-            break;
         }
         if (validYear(year) == 0)
         {
             valid = 0;
             printf("Fehlerhaftes Jahr. Bitte wiederholen! \n");
-            break;
-        }
-        printf("Das eingegebene Datum ist der %d.%d.%d \n", day, month, year);
+        }  
 
     }
+    printf("Das eingegebene Datum ist der %d.%d.%d \n", day, month, year);
     
 
     

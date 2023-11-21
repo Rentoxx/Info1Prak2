@@ -67,7 +67,7 @@ int validDay(int day, int month, int year) {
             
         }else {
 
-            if (month % 2 == 0) // Jeder 2. Monat hat 31 bzw 30 Tage
+            if (month % 2 == 0 && month != 7)
             {
                 
                 if (day <= 30)
@@ -76,14 +76,15 @@ int validDay(int day, int month, int year) {
                 }else {
                     return 0;
                 }
-            
+                
             }else {
                 if (day <= 31)
                 {
                     return 1;
                 }else {
                     return 0;
-                } 
+                }
+                
             }
         } 
         return 1;
@@ -140,41 +141,43 @@ int getCorrectedWeekDay(int WeekDay) { // Verschiebung des Wochentags so, dass M
 
 void printCalender(int year) {
 
-    for (int m = 1; m < 13; m++) //Durch die einzelnen Monate für das Jahr gehen
+    if (year >= 1582 && year < 9999) // Jahr 1582 einführung des Gregorianischden Kalenders
     {
-        printf("%s %d \n",months[m-1], year); // Überschrift ausgeben bsp. Januar 2021
-        int firstDayOfMonthWeekDay = getCorrectedWeekDay(getWeekDay(1,m,year)); //Ersten Wochentag des Monats in Korrigiertem Format abfragen
-
-        if (firstDayOfMonthWeekDay > 1) //Wenn der erste Tag des Monats kein Monatag also = 1 ist passend viele Tabs ergänzen 
+        for (int m = 1; m < 13; m++) //Durch die einzelnen Monate für das Jahr gehen
         {
-            for (int f = 1; f < firstDayOfMonthWeekDay; f++)
+            printf("%s %d \n",months[m-1], year); // Überschrift ausgeben bsp. Januar 2021
+            int firstDayOfMonthWeekDay = getCorrectedWeekDay(getWeekDay(1,m,year)); //Ersten Wochentag des Monats in Korrigiertem Format abfragen
+
+            if (firstDayOfMonthWeekDay > 1) //Wenn der erste Tag des Monats kein Monatag also = 1 ist passend viele Tabs ergänzen 
             {
-                printf("\t");
-            }
-            
-        }
-        
-
-        for (int d = 1; d < 32; d++) //Durch jeden Tag gehen
-        {
-            int WeekDay = getCorrectedWeekDay(getWeekDay(d,m,year)); //Wochentag bekommen und berichtigen, sodass Monatag = 0, Dienstag = 1 etc.
-            if (validDay(d,m,year))
-            { 
-                if (WeekDay % 7 == 0) //Alle 7 ausgegebenene Tage einen Zeilenumbruch anstelle von einem Tab ausgeben
+                for (int f = 1; f < firstDayOfMonthWeekDay; f++)
                 {
-                    printf("%d \n", d);
-                }else {
-                    printf("%d \t", d);
+                    printf("\t");
                 }
                 
-                
             }
             
+
+            for (int d = 1; d < 32; d++) //Durch jeden Tag gehen
+            {
+                int WeekDay = getCorrectedWeekDay(getWeekDay(d,m,year)); //Wochentag bekommen und berichtigen, sodass Monatag = 0, Dienstag = 1 etc.
+                if (validDay(d,m,year))
+                { 
+                    if (WeekDay % 7 == 0) //Alle 7 ausgegebenene Tage einen Zeilenumbruch anstelle von einem Tab ausgeben
+                    {
+                        printf("%d \n", d);
+                    }else {
+                        printf("%d \t", d);
+                    }
+                    
+                    
+                }
+                
+            }
+            printf("\n\n"); //Abstand zwischen den Monaten
+            
         }
-        printf("\n\n"); //Abstand zwischen den Monaten
-        
     }
-    
 
 }
 
@@ -183,7 +186,7 @@ int main(void) {
     int year;
 
 
-    printCalender(2023); //Testfall
+    printCalender(2000); //Testfall
 
     
 
