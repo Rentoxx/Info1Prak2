@@ -1,23 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int validYear(int year) {
-    if (year > 0) {
+int validYear(int year)
+{
+    if (year > 0)
+    {
         return 1;
-    } else {
+    }
+    else
+    {
         return 0;
     }
 }
 
-int validMonth(int month) {
-    if (month > 0 && month <= 12) {
+int validMonth(int month)
+{
+    if (month > 0 && month <= 12)
+    {
         return 1;
-    } else {
+    }
+    else
+    {
         return 0;
     }
 }
 
-int isSchaltJahr(int year) {
+int isSchaltJahr(int year)
+{
 
     if (year % 4 == 0)
     {
@@ -31,15 +40,18 @@ int isSchaltJahr(int year) {
         }
 
         return 1;
-        
-    }else {
+    }
+    else
+    {
         return 0;
     }
 }
 
-int validDay(int day, int month, int year) {
+int validDay(int day, int month, int year)
+{
     /* Prüfen welcher Monat ist und wie viele Tage dieser hat */
-    if (day > 0 ) {
+    if (day > 0)
+    {
 
         if (month == 2)
         {
@@ -48,53 +60,62 @@ int validDay(int day, int month, int year) {
                 if (day <= 29)
                 {
                     return 1;
-                }else {
+                }
+                else
+                {
                     return 0;
                 }
-            }else {
+            }
+            else
+            {
                 if (day <= 28)
                 {
                     return 1;
-                }else {
+                }
+                else
+                {
                     return 0;
                 }
             }
-            
-        }else {
-            
+        }
+        else
+        {
 
             if (month % 2 == 0 && month != 7)
             {
-                
+
                 if (day <= 30)
                 {
                     return 1;
-                }else {
+                }
+                else
+                {
                     return 0;
                 }
-                
-            }else {
+            }
+            else
+            {
                 if (day <= 31)
                 {
                     return 1;
-                }else {
+                }
+                else
+                {
                     return 0;
                 }
-                
             }
-
         }
-        
 
-        
-        
         return 1;
-    } else {
+    }
+    else
+    {
         return 0;
     }
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     int year, month, day;
 
     int valid = 0;
@@ -128,21 +149,20 @@ int main(int argc, char *argv[]) {
         {
             printf("Das eingegebene Datum ist der %d.%d.%d \n", day, month, year);
             return 0;
-        }    
+        }
     }
 
     if (argc != 4)
     {
         printf("Das Programm wurde ohne Startparameter gestartet. Bitte geben Sie ein Datum ein!\n");
     }
-    
-    //Eingabe vom Datum so lange erwarten bis ein gültiges Datum eingegeben wurde
+
+    // Eingabe vom Datum so lange erwarten bis ein gültiges Datum eingegeben wurde
     while (valid == 0)
     {
         year = 0;
         month = 0;
         day = 0;
-
 
         printf("Tag: \n");
         scanf("%d", &day);
@@ -166,17 +186,9 @@ int main(int argc, char *argv[]) {
         {
             valid = 0;
             printf("Fehlerhaftes Jahr. Bitte wiederholen! \n");
-        }  
-
+        }
     }
     printf("Das eingegebene Datum ist der %d.%d.%d \n", day, month, year);
-    
-
-    
-    
-
-
-    
 
     return 0;
 }

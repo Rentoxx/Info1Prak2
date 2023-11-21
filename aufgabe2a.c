@@ -6,32 +6,37 @@
 #define CHINA 3
 #define CANADA 4
 
-void printDate(int day, int month, int year, int countryCode) {
+void printDate(int day, int month, int year, int countryCode)
+{
 
     if (countryCode == ENGLAND)
     {
         printf("Das Datum ist der %d.%d.%d\n", day, month, year);
-    }else if (countryCode == USA)
+    }
+    else if (countryCode == USA)
     {
         printf("Das Datum ist der %d.%d.%d\n", month, day, year);
-    }else if (countryCode == NETHERLAND)
+    }
+    else if (countryCode == NETHERLAND)
     {
         printf("Das Datum ist der %d.%d.%d\n", day, month, year);
-    }else if (countryCode == CHINA)
+    }
+    else if (countryCode == CHINA)
     {
         printf("Das Datum ist der %d.%d.%d\n", year, month, day);
-    }else if (countryCode == CANADA)
+    }
+    else if (countryCode == CANADA)
     {
         printf("Das Datum ist der %d.%d.%d\n", month, day, year);
-    }else {
+    }
+    else
+    {
         printf("Der eingegebene Ländercode konnte nicht zugeordenet werden!\nBitte starten sie das Programm wie folgt:\n<Tag> <Monat> <Jahr> <Land(EN=0,USA=1,NE=2,CHINA=3,CA=4)> \n");
     }
-    
-
 }
 
-
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     int year, month, day, countryCode;
 
     if (argc == 5)
@@ -41,7 +46,9 @@ int main(int argc, char *argv[]) {
         year = atoi(argv[3]);
         countryCode = atoi(argv[4]);
         printDate(day, month, year, countryCode);
-    }else {
+    }
+    else
+    {
         printf("Ohne Startparameter gestartet!\nBitte geben sie ein Datum ein oder starten Sie das Programm mit 4 Parametern wie folgt:\n<Tag> <Monat> <Jahr> <Land(EN=0,USA=1,NE=2,CHINA=3,CA=4)> \n");
 
         printf("Tag: \n");
